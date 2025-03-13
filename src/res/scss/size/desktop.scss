@@ -1,0 +1,48 @@
+@media (min-width: 768px) {
+    .main {
+        display: block;
+        position: relative;
+    
+        width: 65vw;
+        min-height: 100vh;
+    
+        padding: 5vh;
+    
+        margin: auto auto;
+    
+        background-color: rgba(0, 0, 0, 0);
+    
+        backdrop-filter: blur(0.5rem);
+    }
+
+    #popup {
+        position: fixed;
+        display: block;
+
+        overflow-y: scroll;
+        overflow-x: auto;
+
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(0.5rem);
+
+        border: 3px solid white;
+
+        width: 25vw;
+        height: 75vh;
+        z-index: 1;
+
+        right: -35vw;
+        top: 50%;
+        transform: translateY(-50%);
+
+        animation-name: slideIn-popup-initial;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+
+        transition: all ease-in-out 0.3s;
+    }
+
+    #popup:hover {
+        animation-name: slideIn-popup-hover;
+    }
+}

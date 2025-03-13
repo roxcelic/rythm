@@ -1,0 +1,16 @@
+@media (max-width: 768px) {
+    @keyframes slideIn-popup-initial {
+        0% {bottom: -85vh;}
+        100% {bottom: 0vh;}
+    }
+
+    @keyframes slideIn-popup-hover {
+        0% {bottom: 0vh;}
+        100% {bottom: 0vh;}
+    }
+
+    @keyframes slideIn-popup-leave {
+        0% {bottom: 0vh;}
+        100% {bottom: -85vh;}
+    }
+}

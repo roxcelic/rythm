@@ -1,0 +1,41 @@
+@media (max-width: 768px) {
+    .main {
+        display: block;
+        position: relative;
+    
+        min-height: 100vh;
+    
+        padding: 5vh;
+    
+        margin: auto auto;
+    
+        background-color: rgba(0, 0, 0, 0);
+    
+        backdrop-filter: blur(0.5rem);
+    }
+
+    #popup {
+        position: fixed;
+        display: block;
+        overflow: scroll;
+
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(0.5rem);
+
+        border-top: 3px solid white;
+
+        width: 100vw;
+        height: 50vh;
+        z-index: 1;
+
+        animation-name: slideIn-popup-initial;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+
+        transition: all ease-in-out 0.3s;
+    }
+
+    #popup:hover {
+        animation-name: slideIn-popup-hover;
+    }
+}

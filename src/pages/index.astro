@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/astro/main.astro"
+---
+
+<Layout title="hi" desc="hi">
+    <h1>
+        hi,
+    </h1>
+    <hr>
+    <p style="margin: 1vh;">
+        just a test
+    </p>
+
+    <!--
+        endpoint select
+    -->
+    <select name="endpoints" id="api-select">
+      <option value="/github">/github</option>
+      <option value="/bsky">/bsky</option>
+      <option value="/discord">/discord</option>
+      <option value="/paths?method=0">/paths (method 0)</option>
+      <option value="/paths?method=1">/paths (method 1)</option>
+      <option value="/spotify">/spotify</option>
+      <option value="/status">/status</option>
+      <option value="/admin/">/admin</option>
+
+    </select> 
+
+    <br>
+
+    <button id="button">im a button</button>
+</Layout>
