@@ -71,9 +71,7 @@ async function deleteImage(url) {
 }
 
 function copyUrl(url){
-  navigator.clipboard.writeText(url);
-
-  alert("coppied url to clipboard");
+  alert(`you have to manually copy this: ${url}`);
 }
 
 // i got this from https://sentry.io/answers/how-do-i-copy-to-the-clipboard-in-javascript/ so...
