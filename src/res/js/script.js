@@ -4,7 +4,7 @@ import { DisplayImage, submit, loadImages } from "./hold/image";
 import { postStatus } from "./hold/status";
 
 addEventListener("DOMContentLoaded", (event) => {
-    let path = ((window.location.pathname).split("/"))[1];
+    let path = ((window.location.pathname).split("/"))[2];
     const menuItem = document.getElementById(`menu/${path}`).style;
     menuItem.height = "6vh";
     menuItem.backgroundColor = "pink";
