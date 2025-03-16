@@ -1,0 +1,45 @@
+---
+import Layout from "../layouts/astro/main.astro"
+---
+
+<Layout title="blog" desc="blog editing yay">
+    <h1>
+        blog editing,
+    </h1>
+    <hr>
+    <p style="margin: 1vh;">
+        pick a blog to edit, or make a new one
+    </p>
+
+    <!--
+        endpoint select
+    -->
+    <select name="endpoints" id="blog-select">
+
+    </select>
+
+    <br>
+
+    <hr>
+
+    <!--
+        blog editing
+    -->
+    <input placeholder="Post name" id="post/name">
+
+    <br>
+
+    <textarea style="width: 100%; resize: vertical; height: 50vh;" id="post/text"/>
+    
+    <br>
+
+    <hr>
+
+    <p id="post/response"/>
+    <button id="post/submit">
+        submit
+    </button>
+    <button id="post/delete">
+        delete
+    </button>
+</Layout>

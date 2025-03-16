@@ -1,16 +1,23 @@
 @media (max-width: 768px) {
     @keyframes slideIn-popup-initial {
-        0% {bottom: -85vh;}
-        100% {bottom: 0vh;}
+        0% {
+            opacity: 0;
+            bottom: -100vh;
+        }
+        100% {
+            opacity: 1;
+            bottom: -50vh;
+        }
     }
 
-    @keyframes slideIn-popup-hover {
-        0% {bottom: 0vh;}
-        100% {bottom: 0vh;}
-    }
-
-    @keyframes slideIn-popup-leave {
-        0% {bottom: 0vh;}
-        100% {bottom: -85vh;}
+    @keyframes slideIn-popup-exit {
+        0% {
+            opacity: 1;
+            bottom: 0vh;
+        }
+        100% {
+            opacity: 0;
+            bottom: -100vh;
+        }
     }
 }

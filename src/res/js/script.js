@@ -1,48 +1,43 @@
-function popup(content){
-    if (document.getElementById("popup") == null){
-        let popup = document.createElement("div");
-        popup.id = "popup";
-
-        // leave
-        popup.addEventListener("mouseleave", explode);
-        
-        document.addEventListener("touchstart", function(event) {
-            if (!popup.contains(event.target)) {
-                explode();
-            }
-        }, { passive: true });
-
-        popup.innerText = content;
-        document.body.insertBefore(popup, document.getElementById("main"));
-    }
-}
-
-function explode(){
-    let popup = document.getElementById("popup");
-    popup.style.animationName = "slideIn-popup-leave";
-
-    popup.addEventListener("animationend", (event) => {
-        let popup = document.getElementById("popup");
-        popup.parentElement.removeChild(popup);  
-    })
-}
-
-async function loadContent() {
-    let dropdown = document.getElementById("api-select");
-    let apiRoot = "http://localhost:3000/api/v1"
-
-    if (dropdown.value != "Select"){
-        try {
-            let resposne = await fetch(apiRoot + dropdown.value);
-            let data = await resposne.json();
-
-            popup(JSON.stringify(data, null, 4));
-        } catch (e) {
-            popup(e);
-        }
-    }
-}
+import { loadContent } from "./hold/popup";
+import { LoadPosts, submitPost, LoadPost, deletePost } from "./hold/blog";
+import { DisplayImage, submit, loadImages } from "./hold/image";
+import { postStatus } from "./hold/status";
 
 addEventListener("DOMContentLoaded", (event) => {
-    document.getElementById("button").addEventListener("click", loadContent);
+    let path = ((window.location.pathname).split("/"))[1];
+    const menuItem = document.getElementById(`menu/${path}`).style;
+    menuItem.height = "6vh";
+    menuItem.backgroundColor = "pink";
+    menuItem.border = "4px solid black";
+
+    switch (path){
+        case "api":
+            let button = document.getElementById("button");
+            if (button) button.addEventListener("click", loadContent);
+
+            break;
+        case "blog":
+            LoadPosts();
+            document.getElementById("post/submit").addEventListener("click", submitPost);
+            document.getElementById("post/delete").addEventListener("click", deletePost);
+
+            let dropdown = document.getElementById("blog-select");
+            dropdown.addEventListener('change', function() {
+                LoadPost(dropdown.value);
+            });
+
+            break;
+        case "images":
+            document.getElementById('image').addEventListener('change', DisplayImage);
+            document.getElementById('uploadForm').addEventListener('submit', submit);
+
+            loadImages();
+
+            break;
+        
+        case "status":
+            document.getElementById('status/publish').addEventListener('click', postStatus);
+
+            break;
+    }
 });

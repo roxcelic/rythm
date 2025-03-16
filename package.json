@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "clear": "rm -R ../melody/frontends/; cd ../melody; mkdir frontends",
+    "share": "mv ./dist/* ../melody/frontends/",
+    "dist": "npm run build; npm run clear; npm run share"
   },
   "dependencies": {
     "astro": "^5.4.2"

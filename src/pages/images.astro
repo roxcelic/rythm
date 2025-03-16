@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/astro/main.astro"
+---
+
+<Layout title="images" desc="my image collection">
+    <h1>
+        image collection,
+    </h1>
+    <hr>
+    <h2>
+        Upload
+    </h2>
+    <form id="uploadForm" enctype="multipart/form-data" style="display: grid;">
+        <div id="formHolder">
+            <input type="file" id="image" name="image" accept="image/*" required>
+            <div id="imagePreview" style="margin-top: 10px;"></div>
+        </div>
+        <button type="submit">Upload Image</button>
+    </form>
+    <p id="image/result"/>
+    <br>
+    <hr>
+    <h2>
+        view
+    </h2>
+    <div id="imageHold" />
+</Layout>

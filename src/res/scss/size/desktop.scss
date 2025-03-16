@@ -18,31 +18,101 @@
     #popup {
         position: fixed;
         display: block;
-
+    
         overflow-y: scroll;
         overflow-x: auto;
-
+    
         background-color: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(0.5rem);
-
+    
         border: 3px solid white;
-
-        width: 25vw;
+    
+        width: 250px;
         height: 75vh;
         z-index: 1;
-
-        right: -35vw;
+    
+        right: -200px;
         top: 50%;
         transform: translateY(-50%);
+    
+        transition: all ease-in-out 0.5s;
 
         animation-name: slideIn-popup-initial;
         animation-duration: 0.5s;
-        animation-fill-mode: forwards;
-
-        transition: all ease-in-out 0.3s;
     }
 
     #popup:hover {
-        animation-name: slideIn-popup-hover;
+        right: 0px;
+    }
+
+    .imageHost {
+        display: grid;
+    
+        grid-template-columns: 70% 30%;
+    
+        height: 150px;
+        width: 90%;
+    
+        border-radius: 7px;
+    
+        margin: auto;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+    
+        transition: all ease-in-out 0.3s;
+    
+        .image {
+            height: 100%;
+            width: 100%;
+    
+            margin: auto auto;
+            border-radius: 10px 0px 0px 10px;
+    
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+    
+            transition: inherit;
+        }
+    
+        .imageActions {
+            height: 100%;
+            width: 0%;
+    
+            margin: auto 0;
+    
+            background-color: rgb(44, 0, 7);
+            overflow: hidden;
+    
+            transition: inherit;
+    
+            display: grid;
+            grid-template-rows: 25% 25% 25% 25%;
+    
+            * {
+                color: white !important;
+                white-space: nowrap;
+    
+                margin: auto;
+    
+                transition: inherit;
+            }
+    
+            *:hover {
+                color: pink !important;
+            }
+        }
+    }
+    
+    .imageHost:hover{
+        .imageActions {
+            width: 60%;
+        }
+    }
+    
+    #imageHold hr {
+        width: 80%;
+    
+        margin: auto;
     }
 }

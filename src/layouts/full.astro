@@ -8,6 +8,8 @@ const { desc } = Astro.props;
 const { title } = Astro.props;
 
 import '../res/scss/style.scss'
+
+import Menu from '../comp/menu.astro';
 ---
 
 <!doctype html>
@@ -30,6 +32,7 @@ import '../res/scss/style.scss'
 		<title>{ title }</title>
 	</head>
 	<body>
+		<Menu />
 		<div class="main" id="main">
 			<slot />
 		</div>

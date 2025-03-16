@@ -18,3 +18,93 @@ hr {
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
+
+button, select, label, input[type="file"]::file-selector-button  {
+    width: 100% !important;
+
+    color: inherit;
+    font: inherit;
+
+    border: 2px solid black !important;
+    border-radius: 7px !important;
+    background-color: transparent;
+}
+
+.menu {
+    position: fixed;
+    display: flex;
+
+    width: 100vw;
+    height: 10px;
+    z-index: 1;
+
+    justify-content: space-between;
+
+    .page {
+        background: none;
+        display: flex;
+
+        width: 90%;
+        height: 5vh;
+
+        color: inherit;
+        font: inherit;  
+
+        justify-content: center;
+        align-items: center;  
+
+        background-color: rgba(49, 41, 48, 0.7);
+        border: 3px solid black;
+
+        transition: all ease-in-out 0.3s;
+    }
+
+    .page:hover {
+        height: 6vh;
+        
+        background-color: pink;
+        border: 4px solid black;
+    }
+}
+
+input[type="file"] {
+    width: 50%;
+    color: white;
+
+    border-radius: 7px;
+}
+  
+input[type="file"]::file-selector-button {
+    color: inherit;
+    font: inherit;
+
+    border: 2px solid black !important;
+    border-radius: 7px !important;
+    background-color: transparent;
+}
+
+#formHolder {
+    display: grid;
+
+    grid-template-columns: 100%;
+
+    * {
+        width: 100%;
+
+        height: min-content;
+        margin: auto;
+    }
+}
+
+#imagePreview {
+    display: block;
+
+    width: 50%;
+    padding: 1vh;
+    
+    * {
+        border-radius: 7px;
+        max-width: 100%;
+        height: auto;  
+    }
+}
