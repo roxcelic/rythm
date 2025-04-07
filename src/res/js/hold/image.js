@@ -71,7 +71,13 @@ async function deleteImage(url) {
 }
 
 function copyUrl(url){
-  alert(`you have to manually copy this: ${url}`);
+  let urlHold = document.getElementById("url");
+  let urlLink = urlHold.children[0];
+  
+  urlLink.href = url;
+  urlLink.textContent = url;
+
+  alert("url added to the top of the page");
 }
 
 // i got this from https://sentry.io/answers/how-do-i-copy-to-the-clipboard-in-javascript/ so...

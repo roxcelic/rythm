@@ -108,3 +108,14 @@ input[type="file"]::file-selector-button {
         height: auto;  
     }
 }
+
+#url {
+    text-align: center;
+    background-color: #ff0e9f5e;
+    padding: 1vh;
+    border-radius: 13px;
+    
+    a {
+        color: white !important;
+    }
+}
