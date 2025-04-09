@@ -50,6 +50,35 @@ export async function submit(e) {
     }
 }
 
+export async function submitAlt(e) {
+  e.preventDefault();
+  
+  let form = document.getElementById('uploadForm');
+  let result = document.getElementById('image/result');
+  let formData = new FormData(form);
+
+  try {
+      let response = await fetch(`http://${window.location.hostname}:3000/api/v1/admin/wallpaper/upload`, {
+      method: 'POST',
+      body: formData,
+    });
+    
+    if (!response.ok) {
+      throw new Error('Upload failed');
+    }
+    
+    let data = await response.json();
+
+    result.style.color = "white";
+    result.innerText = data.status;
+
+    window.location.href = window.location.href;
+  } catch (e) {
+      result.style.color = "red";
+      result.innerText = e;
+  }
+}
+
 async function deleteImage(url) {
     let compressedData = {
       "fileName": url,
@@ -107,6 +136,7 @@ function spawnNewImage(url) {
   let newImage_image = document.createElement('div');
   newImage_image.className = "image"
   newImage_image.style.backgroundImage = `url('http://${window.location.hostname}:3000/media/${url}')`;
+  newImage_image.textContent = url;
 
   let newImage_actions = document.createElement('div');
   newImage_actions.className = "imageActions";
@@ -114,7 +144,7 @@ function spawnNewImage(url) {
   let Ps = [];
 
   Ps[0] = document.createElement('p');
-    Ps[0].textContent = "copy image";
+    Ps[0].textContent = "copy";
     Ps[0].addEventListener("click", () =>{
       copyImgToClipboard(`http://${window.location.hostname}:3000/media/${url}`);
     });
@@ -126,13 +156,13 @@ function spawnNewImage(url) {
     });
   
   Ps[2] = document.createElement('p');
-    Ps[2].textContent = "delete image";
+    Ps[2].textContent = "delete";
     Ps[2].addEventListener("click", () =>{
       deleteImage(url);
     });
   
   Ps[3] = document.createElement('p');
-    Ps[3].textContent = "download image";
+    Ps[3].textContent = "download";
     Ps[3].addEventListener("click", () =>{
       downloadImage(`http://${window.location.hostname}:3000/media/${url}`);
     });

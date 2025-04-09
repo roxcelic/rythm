@@ -2,27 +2,21 @@
 import Layout from "../layouts/astro/main.astro"
 ---
 
-<Layout title="images" desc="my image collection">
+<Layout title="post" desc="extra uploads for data sharing">
     <h1>
-        image collection,
+        wallpaper,
     </h1>
     <hr>
     <h2>
         Upload
     </h2>
-    <form id="uploadForm" enctype="multipart/form-data" style="display: grid;">
+    <form id="uploadForm" enctype="multipart/form-data">
         <div id="formHolder">
             <input type="file" id="image" name="image" accept="" required>
             <div id="imagePreview" style="margin-top: 10px;"></div>
         </div>
         <button type="submit">Upload Image</button>
     </form>
+    <img src='https://api.roxcelic.love/api/v1/wallpaper'>
     <p id="image/result"/>
-    <br>
-    <hr>
-    <h2>
-        view
-    </h2>
-    <p id="url"><a>No url copied</a></p>
-    <div id="imageHold" />
 </Layout>

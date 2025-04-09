@@ -1,6 +1,6 @@
 import { loadContent } from "./hold/popup";
 import { LoadPosts, submitPost, LoadPost, deletePost } from "./hold/blog";
-import { DisplayImage, submit, loadImages } from "./hold/image";
+import { DisplayImage, submit, loadImages, submitAlt } from "./hold/image";
 import { postStatus } from "./hold/status";
 
 addEventListener("DOMContentLoaded", (event) => {
@@ -37,6 +37,14 @@ addEventListener("DOMContentLoaded", (event) => {
         
         case "status":
             document.getElementById('status/publish').addEventListener('click', postStatus);
+
+            break;
+
+        case "post":
+            document.getElementById('image').addEventListener('change', DisplayImage);
+            document.getElementById('uploadForm').addEventListener('submit', submitAlt);
+
+            loadImages();
 
             break;
     }
