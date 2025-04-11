@@ -56,7 +56,7 @@ async function explode(){
 
 export async function loadContent() {
     let dropdown = document.getElementById("api-select");
-    let apiRoot = `http://${window.location.hostname}:3000/api/v1`;
+    let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/api/v1`;
 
     if (dropdown.value != "Select"){
         try {

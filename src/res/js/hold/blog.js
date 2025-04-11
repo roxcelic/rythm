@@ -1,10 +1,11 @@
 export async function LoadPosts() {
     let dropdown = document.getElementById("blog-select");
+    let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/`;
 
     dropdown.innerHTML = "";
 
     try {
-        let resposne = await fetch(`http://${window.location.hostname}:3000/api/v1/paths?method=1`);
+        let resposne = await fetch(`${apiRoot}api/v1/paths?method=1`);
         let data = await resposne.json();
 
         data.forEach(item => {
@@ -19,7 +20,8 @@ export async function LoadPosts() {
 
 export async function LoadPost(value) {
     value = value.slice(0, -3);
-    let url = `http://${window.location.hostname}:3000/api/v1/blog?post=${value}`;
+    let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/`;
+    let url = `${apiRoot}api/v1/blog?post=${value}`;
 
     try {
         let resposne = await fetch(url);
@@ -52,8 +54,10 @@ export async function submitPost() {
         "message": text
     }
 
+    let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/`;
+
     try {
-        const response = await fetch(`http://${window.location.hostname}:3000/api/v1/admin/blog/edit`, {
+        const response = await fetch(`${apiRoot}api/v1/admin/blog/edit`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -84,8 +88,10 @@ export async function deletePost() {
         "fileName": name,
     }
 
+    let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/`;
+
     try {
-        const response = await fetch(`http://${window.location.hostname}:3000/api/v1/admin/blog/delete`, {
+        const response = await fetch(`${apiRoot}api/v1/admin/blog/delete`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -7,10 +7,10 @@ export async function postStatus() {
         image
     }
 
-    console.log(compressedData);
+    let baseUrl = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/`;
 
     try {
-        const response = await fetch(`http://${window.location.hostname}:3000/api/v1/admin/changeStatus`, {
+        const response = await fetch(`${baseUrl}api/v1/admin/changeStatus`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
