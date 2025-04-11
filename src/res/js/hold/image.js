@@ -83,12 +83,14 @@ export async function submitAlt(e) {
 }
 
 async function deleteImage(url) {
-    let compressedData = {
+  let compressedData = {
       "fileName": url,
   }
 
+  let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/`;
+
   try {
-      await fetch(`http://${window.location.hostname}:3000/api/v1/admin/deleteUpload`, {
+      await fetch(`${apiRoot}api/v1/admin/deleteUpload`, {
           method: "POST",
           headers: {
               "Content-Type": "application/json"
@@ -133,12 +135,14 @@ function downloadImage(imgUrl) {
 }
 
 function spawnNewImage(url) {
+  let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/`;
+
   let newImage = document.createElement('div');
   newImage.className = "imageHost";
 
   let newImage_image = document.createElement('div');
   newImage_image.className = "image"
-  newImage_image.style.backgroundImage = `url('http://${window.location.hostname}:3000/media/${url}')`;
+  newImage_image.style.backgroundImage = `url('${apiRoot}media/${url}')`;
   newImage_image.textContent = url;
 
   let newImage_actions = document.createElement('div');
@@ -149,13 +153,13 @@ function spawnNewImage(url) {
   Ps[0] = document.createElement('p');
     Ps[0].textContent = "copy";
     Ps[0].addEventListener("click", () =>{
-      copyImgToClipboard(`http://${window.location.hostname}:3000/media/${url}`);
+      copyImgToClipboard(`${apiRoot}media/${url}`);
     });
   
   Ps[1] = document.createElement('p');
     Ps[1].textContent = "copy url";
     Ps[1].addEventListener("click", () =>{
-      copyUrl(`https://api.roxcelic.love/media/${url}`);
+      copyUrl(`${apiRoot}media/${url}`);
     });
   
   Ps[2] = document.createElement('p');
@@ -167,7 +171,7 @@ function spawnNewImage(url) {
   Ps[3] = document.createElement('p');
     Ps[3].textContent = "download";
     Ps[3].addEventListener("click", () =>{
-      downloadImage(`http://${window.location.hostname}:3000/media/${url}`);
+      downloadImage(`${apiRoot}media/${url}`);
     });
 
   Ps.forEach(p => {
@@ -184,7 +188,7 @@ export async function loadImages() {
   let imageHold = document.getElementById('imageHold');
 
   try {
-    let resposne = await fetch(`http://${window.location.hostname}:3000/api/v1/paths?method=0`);
+    let resposne = await fetch(`${apiRoot}api/v1/paths?method=0`);
     let data = await resposne.json()
 
     data.forEach(image => {

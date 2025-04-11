@@ -45,6 +45,8 @@ export async function sendMessage() {
         color: document.getElementById("chatColor").value
     }
 
+    document.getElementById("chatMessage").value = "";
+
     let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/`;
 
     try {

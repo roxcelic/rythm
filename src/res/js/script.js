@@ -49,6 +49,12 @@ addEventListener("DOMContentLoaded", (event) => {
 
             loadChat();
             document.getElementById("chatSend").addEventListener("click", sendMessage);
+            
+            document.getElementById("chatMessage").addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    sendMessage()
+                }
+            });
 
             break;
     }
