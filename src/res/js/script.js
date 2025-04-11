@@ -2,6 +2,7 @@ import { loadContent } from "./hold/popup";
 import { LoadPosts, submitPost, LoadPost, deletePost } from "./hold/blog";
 import { DisplayImage, submit, loadImages, submitAlt } from "./hold/image";
 import { postStatus } from "./hold/status";
+import { loadChat, sendMessage } from "./hold/chat";
 
 addEventListener("DOMContentLoaded", (event) => {
     let path = ((window.location.pathname).split("/"))[2];
@@ -45,6 +46,9 @@ addEventListener("DOMContentLoaded", (event) => {
             document.getElementById('uploadForm').addEventListener('submit', submitAlt);
 
             loadImages();
+
+            loadChat();
+            document.getElementById("chatSend").addEventListener("click", sendMessage);
 
             break;
     }

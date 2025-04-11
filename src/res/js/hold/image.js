@@ -58,8 +58,10 @@ export async function submitAlt(e) {
   let result = document.getElementById('image/result');
   let formData = new FormData(form);
 
+  let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/`;
+
   try {
-      let response = await fetch(`http://${window.location.hostname}:3000/api/v1/admin/wallpaper/upload`, {
+      let response = await fetch(`${apiRoot}api/v1/admin/wallpaper/upload`, {
       method: 'POST',
       body: formData,
     });
