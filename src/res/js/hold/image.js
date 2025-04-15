@@ -159,7 +159,7 @@ function spawnNewImage(url) {
   Ps[1] = document.createElement('p');
     Ps[1].textContent = "copy url";
     Ps[1].addEventListener("click", () =>{
-      copyUrl(`${apiRoot}media/${url}`);
+      copyUrl(`https://api.roxcelic.love/media/${url}`);
     });
   
   Ps[2] = document.createElement('p');
