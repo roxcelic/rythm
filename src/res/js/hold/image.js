@@ -186,6 +186,7 @@ function spawnNewImage(url) {
 
 export async function loadImages() {
   let imageHold = document.getElementById('imageHold');
+  let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/`;
 
   try {
     let resposne = await fetch(`${apiRoot}api/v1/paths?method=0`);
