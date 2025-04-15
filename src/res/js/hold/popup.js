@@ -84,7 +84,7 @@ export async function checkSecurity() {
         data.status.forEach(ip => {
             if (ip.succefull && !ips.succesfull.includes(ip.ip)){
                 ips.succesfull.push(ip.ip);
-            } else if (!ip.succefull && !ips.includes.unsuccesfull(ip.ip)){
+            } else if (!ip.succefull && !ips.unsuccesfull.includes(ip.ip)){
                 ips.unsuccesfull.push(ip.ip);
             }
         });
