@@ -69,3 +69,23 @@ export async function loadContent() {
         }
     }
 }
+
+export async function checkSecurity() {
+    let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/api/v1/admin/viewlog`;
+
+    try {
+        let resposne = await fetch(apiRoot );
+        let data = await resposne.json();
+        let ips = [];
+
+        data.status.forEach(ip => {
+            if (ip.succefull && !ips.includes(ip.ip)){
+                ips.push(ip.ip);
+            }       
+        });
+
+        popup(JSON.stringify(ips, null, 4));
+    } catch (e) {
+        popup(e);
+    }
+}

@@ -1,4 +1,4 @@
-import { loadContent } from "./hold/popup";
+import { loadContent, checkSecurity } from "./hold/popup";
 import { LoadPosts, submitPost, LoadPost, deletePost } from "./hold/blog";
 import { DisplayImage, submit, loadImages, submitAlt } from "./hold/image";
 import { postStatus } from "./hold/status";
@@ -15,6 +15,9 @@ addEventListener("DOMContentLoaded", (event) => {
         case "api":
             let button = document.getElementById("button");
             if (button) button.addEventListener("click", loadContent);
+
+            let button2 = document.getElementById("SecurityButton");
+            if (button2) button2.addEventListener("click", checkSecurity);
 
             break;
         case "blog":
