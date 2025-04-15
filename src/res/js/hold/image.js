@@ -198,6 +198,6 @@ export async function loadImages() {
     });
 
   } catch (e) {
-    console.log(`api root: ${apiRoot} \n error: ${e}`);
+    console.log(e);
   }
 }
