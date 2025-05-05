@@ -125,3 +125,53 @@ export async function sendMessage() {
         console.log(e);
     }
 }
+
+export async function loadChats() {
+    let dropdown = document.getElementById("chatroom");
+    let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/`;
+    
+    try {
+        let resposne = await fetch(`${apiRoot}api/v1/paths?method=2`);
+        let data = await resposne.json();
+    
+        data.forEach(item => {
+            item = item.substring(0, item.length - 5);
+
+            if (item != "admin"){
+                dropdown.appendChild(newOption(item));
+            }
+        });
+    } catch (e) {
+        console.log(e);
+    }
+
+    let params = new URLSearchParams(window.location.search);
+    let chat = params.get('chat');
+
+    chat = chat != undefined ? `chat/${chat}` : `chat/${document.cookie.split('; ').find(row => row.startsWith('room='))?.split('=')[1]}`;
+
+    document.getElementById(chat).selected = true;
+}
+
+export async function shrodingerschat() {
+    let chatname = document.getElementById("createchat/name");
+    let apiRoot = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':3000' : ''}/`;
+    apiRoot = `${apiRoot}api/v1/chat/makechat?chatName=${chatname.value}`;
+
+    try {
+        let response = await fetch(apiRoot);
+        let data = await response.json();
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+function newOption(value) {
+    let option = document.createElement("option");
+
+    option.value = value;
+    option.innerText = value;
+    option.id = `chat/${value}`;
+
+    return option;
+}

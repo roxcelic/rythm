@@ -2,7 +2,9 @@ import { loadContent, checkSecurity } from "./hold/popup";
 import { LoadPosts, submitPost, LoadPost, deletePost } from "./hold/blog";
 import { DisplayImage, submit, loadImages, submitAlt } from "./hold/image";
 import { postStatus } from "./hold/status";
-import { loadChat, sendMessage, deleteChat } from "./hold/chat";
+import { viewAdmins, removeAdmin, addAdmin } from "./hold/admin";
+import { viewWords, removeWord, addWord } from "./hold/filter";
+import { loadChat, sendMessage, deleteChat, loadChats, shrodingerschat } from "./hold/chat";
 
 addEventListener("DOMContentLoaded", (event) => {
     let path = ((window.location.pathname).split("/"))[2];
@@ -12,6 +14,18 @@ addEventListener("DOMContentLoaded", (event) => {
     menuItem.border = "4px solid black";
 
     switch (path){
+        case "":
+            viewAdmins();
+            
+            document.getElementById("adminIpsDelete").addEventListener("click", removeAdmin);
+            document.getElementById("adminIpsAdd").addEventListener("click", addAdmin);
+
+            viewWords();
+
+            document.getElementById("chatWordsDelete").addEventListener("click", removeWord);
+            document.getElementById("ChatWordsAdd").addEventListener("click", addWord);
+
+            break;
         case "api":
             let button = document.getElementById("button");
             if (button) button.addEventListener("click", loadContent);
@@ -49,10 +63,12 @@ addEventListener("DOMContentLoaded", (event) => {
             document.getElementById('uploadForm').addEventListener('submit', submitAlt);
 
             loadImages();
-
             loadChat();
+            loadChats();
+
             document.getElementById("chatSend").addEventListener("click", sendMessage);
             document.getElementById("chatDelete").addEventListener("click", deleteChat);
+            document.getElementById("createchat/button").addEventListener("click", shrodingerschat);
             
             document.getElementById("chatMessage").addEventListener('keydown', function(event) {
                 if (event.key === 'Enter') {
@@ -67,12 +83,11 @@ addEventListener("DOMContentLoaded", (event) => {
             let speed = document.getElementById("chatSpeed");
             let speedval = document.cookie.split('; ').find(row => row.startsWith('speed='))?.split('=')[1];
             speed.value = parseInt(speedval != undefined ? parseInt(speedval) : 1000);
-
-            let chatRoom = document.getElementById("chatroom");
-            chatRoom.textContent = document.cookie.split('; ').find(row => row.startsWith('room='))?.split('=')[1];
             
             let userName = document.getElementById("chatname");
             userName.textContent = document.cookie.split('; ').find(row => row.startsWith('name='))?.split('=')[1];
+
+            let chatRoom = document.getElementById("chatroom");
 
             color.addEventListener('input', function() {
                 document.cookie = `color=${this.value}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
@@ -82,7 +97,7 @@ addEventListener("DOMContentLoaded", (event) => {
                 document.cookie = `speed=${this.value}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
             });
 
-            chatRoom.addEventListener('input', function() {
+            chatRoom.addEventListener('change', function() {
                 document.cookie = `room=${this.value}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
             });
 
@@ -90,7 +105,7 @@ addEventListener("DOMContentLoaded", (event) => {
                 document.cookie = `name=${this.value}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
             });
 
-            chatRoom.addEventListener('input', function() {
+            chatRoom.addEventListener('change', function() {
                 document.getElementById("chat").innerHTML = "";
             });
 

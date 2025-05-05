@@ -48,7 +48,18 @@ import Layout from "../layouts/astro/main.astro"
         <input type="number" id="chatSpeed" min="100" max="2000" value=1000>
     </div>
     <div class="chatcontainer" style="grid-template-columns: 90% 10%;">
-        <input placeholder="roomid" id="chatroom" style="width: 100%;">
+        <select name="endpoints" id="chatroom">
+            <option value="admin">base chat</option>
+        </select>
         <button id="chatDelete">delete room</button>
     </div>
+
+    <!--add chat -->
+    <hr>
+    <h3>add chat</h3>
+    <div class="chatcontainer" style="grid-template-columns: 90% 10%;">
+        <input placeholder="chatname" id="createchat/name" style="width: 100%;">
+        <button id="createchat/button">create room</button>
+    </div>
+    <hr>
 </Layout>
